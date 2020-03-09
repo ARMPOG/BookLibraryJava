@@ -40,13 +40,13 @@ public class BookStorage {
     }
 
     public List<Book> getMyBooks() {
-        List<Book> result  = new ArrayList<>();
+        List<Book> result = new ArrayList<>();
         UserModel currentUser = userManager.getCurrentUser();
         result.addAll(books.stream().filter(book -> book.getAuthor().getEmail().equals(currentUser.getEmail())).collect(Collectors.toList()));
         return result;
     }
 
-    public List<Book> getAllBooks(){
+    public List<Book> getAllBooks() {
         List<Book> result = new ArrayList<>();
         result.addAll(books);
         return result;

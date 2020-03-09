@@ -14,9 +14,10 @@ public class UserManager {
 
     private static UserManager userManager;
 
-    private UserManager(){}
+    private UserManager() {
+    }
 
-    public synchronized static UserManager getInstance(){
+    public synchronized static UserManager getInstance() {
         synchronized (UserManager.class) {
             if (userManager == null) {
                 userManager = new UserManager();
@@ -26,7 +27,7 @@ public class UserManager {
     }
 
     private UserStorage userStorage = UserStorage.getInstance();
-    private  Util util;
+    private Util util;
 
     private UserModel currentUser;
 
@@ -41,7 +42,7 @@ public class UserManager {
     }
 
 
-    public UserModel getCurrentUser(){
+    public UserModel getCurrentUser() {
         return currentUser;
     }
 
@@ -56,17 +57,17 @@ public class UserManager {
             System.out.print("Password:  ");
             password = scan.nextLine();
 
-           boolean isExist = userStorage.checkUser(email,password);
-           if (isExist){
-               util.bookOptions();
-               currentUser = UserModel.builder()
-                       .email(email)
-                       .password(password)
-                       .build();
-           }else {
-               System.out.println("Incorrect email or password ....");
-              util.appStart();
-           }
+            boolean isExist = userStorage.checkUser(email, password);
+            if (isExist) {
+                util.bookOptions();
+                currentUser = UserModel.builder()
+                        .email(email)
+                        .password(password)
+                        .build();
+            } else {
+                System.out.println("Incorrect email or password ....");
+                util.appStart();
+            }
         } catch (InputMismatchException n) {
             n.printStackTrace();
         }

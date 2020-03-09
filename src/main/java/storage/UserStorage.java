@@ -48,11 +48,11 @@ public class UserStorage {
         return isNotExist;
     }
 
-    public boolean checkUser(String email, String password){
+    public boolean checkUser(String email, String password) {
         boolean isNotExist = true;
-        if (!users.isEmpty() && users.stream().anyMatch(userModel -> userModel.getEmail().equalsIgnoreCase(email)&&
-                userModel.getPassword().equals(password))){
-        }else {
+        if (!users.isEmpty() && users.stream().anyMatch(userModel -> userModel.getEmail().equalsIgnoreCase(email) &&
+                userModel.getPassword().equals(password))) {
+        } else {
             isNotExist = false;
         }
 
